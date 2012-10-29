@@ -5,6 +5,8 @@ Repository für die Folien für Programmieren im Wintersemester 2012/2013
 
 Offizielle Webpage zum Tutorium: [martin-thoma.com/programmieren-tutorium](http://martin-thoma.com/programmieren-tutorium/)
 
+[Offizielle Vorlesungsinhalte](http://baldur.iti.uka.de/programmieren/): Falls ihr auf den Praktomat nicht zugreifen könnt
+
 Weiteres
 --------
 
