@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+          "-//Puppy Crawl//DTD Check Configuration 1.1//EN"
+          "http://www.puppycrawl.com/dtds/configuration_1_1.dtd">
+
+<module name="Checker">
+    <module name="TreeWalker">
+        <!--
+         !________________________________________________________________________________________
+         !
+         !     W H I T E S P A C E
+         !________________________________________________________________________________________
+         !-->
+        <!-- Checks the padding of an empty for initializer. !-->
+        <!-- See http://checkstyle.sf.net/config_whitespace.html !-->
+        <module name="EmptyForInitializerPad">
+            <property name="option" value="nospace"/>
+        </module>
+
+        <!-- Checks the padding of an empty for iterator. !-->
+        <!-- See http://checkstyle.sf.net/config_whitespace.html !-->
+        <module name="EmptyForIteratorPad">
+            <property name="option" value="nospace"/>
+        </module>
+
+        <!-- Checks that the whitespace around the Generic tokens < and > is correct to the typical convention. !-->
+        <!-- See http://checkstyle.sourceforge.net/config_whitespace.html#GenericWhitespace !-->
+        <module name="GenericWhitespace"/>
+
+        <!-- Checks the padding between the identifier of a method definition, !-->
+        <!-- constructor definition, method call, or constructor invocation; and the left parenthesis of the parameter list. !-->
+        <!-- See http://checkstyle.sf.net/config_whitespace.html !-->
+        <module name="MethodParamPad">
+            <property name="allowLineBreaks" value="false"/>
+            <property name="option"          value="nospace"/>
+            <property name="tokens"          value="CTOR_DEF, LITERAL_NEW, METHOD_CALL, METHOD_DEF, SUPER_CTOR_CALL "/>
+        </module>
+
+        <!-- Checks that there is no whitespace after a token. !-->
+        <!-- See http://checkstyle.sf.net/config_whitespace.html !-->
+        <module name="NoWhitespaceAfter">
+            <property name="allowLineBreaks" value="true"/>
+            <property name="tokens"          value="ARRAY_INIT, BNOT, DEC, DOT, INC, LNOT, UNARY_MINUS, UNARY_PLUS"/>
+        </module>
+
+        <!-- Checks that there is no whitespace before a token. !-->
+        <!-- See http://checkstyle.sf.net/config_whitespace.html !-->
+        <module name="NoWhitespaceBefore">
+            <property name="allowLineBreaks" value="false"/>
+            <property name="tokens"          value="SEMI, POST_DEC, POST_INC"/>
+        </module>
+
+        <!-- Checks the policy on how to wrap lines on operators. !-->
+        <!-- See http://checkstyle.sf.net/config_whitespace.html !-->
+        <module name="OperatorWrap">
+            <property name="option" value="nl"/>
+            <property name="tokens" value="ASSIGN, BAND, BOR, BSR, BXOR, COLON, DIV,
+                                           EQUAL, GE, GT, LAND, LE, LITERAL_INSTANCEOF,
+                                           LOR, LT, MINUS, MOD, NOT_EQUAL,
+                                           PLUS, QUESTION, SL, SR, STAR"/>
+        </module>
+
+        <!-- Checks the policy on the padding of parentheses. !-->
+        <!-- See http://checkstyle.sf.net/config_whitespace.html !-->
+        <module name="ParenPad">
+            <property name="option" value="nospace"/>
+            <property name="tokens" value="CTOR_CALL, LPAREN, METHOD_CALL, RPAREN, SUPER_CTOR_CALL"/>
+        </module>
+
+        <!-- Checks the policy on the padding of parentheses for typecasts. !-->
+        <!-- See http://checkstyle.sf.net/config_whitespace.html !-->
+        <module name="TypecastParenPad">
+            <property name="option" value="nospace"/>
+            <property name="tokens" value="TYPECAST, RPAREN"/>
+        </module>
+
+        <!-- Checks that a token is followed by whitespace. !-->
+        <!-- See http://checkstyle.sf.net/config_whitespace.html !-->
+        <module name="WhitespaceAfter">
+            <property name="tokens" value="COMMA, SEMI, TYPECAST"/>
+        </module>
+
+        <!-- Checks that a token is surrounded by whitespace. !-->
+        <!-- See http://checkstyle.sf.net/config_whitespace.html !-->
+        <module name="WhitespaceAround">
+            <property name="tokens" value="ASSIGN, BAND, BAND_ASSIGN, BOR, BOR_ASSIGN, BSR, BSR_ASSIGN,
+                                           BXOR, BXOR_ASSIGN, COLON, DIV, DIV_ASSIGN, EQUAL, GE, GT, LAND,
+                                           LCURLY, LE, LITERAL_ASSERT, LITERAL_CATCH, LITERAL_DO, LITERAL_ELSE,
+                                           LITERAL_FINALLY, LITERAL_FOR, LITERAL_IF, LITERAL_RETURN,
+                                           LITERAL_SYNCHRONIZED, LITERAL_TRY, LITERAL_WHILE, LOR, LT,
+                                           MINUS, MINUS_ASSIGN, MOD, MOD_ASSIGN, NOT_EQUAL, PLUS, PLUS_ASSIGN,
+                                           QUESTION, RCURLY, SL, SLIST, SL_ASSIGN, SR, SR_ASSIGN, STAR, STAR_ASSIGN"/>
+            <property name="allowEmptyConstructors" value="false"/>
+            <property name="allowEmptyMethods"      value="false"/>
+        </module>
+    </module>
+</module>
