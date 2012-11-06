@@ -1,0 +1,37 @@
+Datentypen :
+
+byte: 8-bit-Zahlen fŸr Werte von -128 ... 127 geeignet.
+short: 16-bit-Zahlen fŸr Werte von -32768 ... 32767 geeignet.
+int: 32-bit-Zahlen fŸr Werte von -2^31 ... 2^31 -1 geeignet.
+long: 64-bit-Zahl fŸr Werte von -2^63 ... 2^63 -1 geeignet.
+
+float: 32 bit (einfache Genauigkeit)
+double: 64 bit (doppelte Genauigkeit)
+
+Gears: 
+
+private byte chainWheelNr;
+Datentyp byte kann hier verwendet werden, 
+da der Wert zwischen 1 und 3 liegt 
+und damit durch eine 8-bit-Zahl darstellbar ist. 
+
+private byte ritzNr;
+Datentyp byte kann hier verwendet werden, 
+da der Wert zwischen 1 und 10 liegt 
+und damit durch eine 8-bit-Zahl darstellbar. 
+	
+Wheels:
+
+private short rimDiameter; 
+Datentyp short kann hier verwendet werden,
+da der Felgendurchmesser durch eine 16-bit-Zahl darstellbar ist.
+
+private float tireWidth;
+Datentyp float kann hier verwendet werden, 
+da die ReifenstŠrke als Dezimalzahl angegeben werden kann 
+und durch eine 32-bit-Zahl darstellbar ist.
+	
+Bike: 
+
+private int price;
+Datentyp int ist hier optimal, da der Preis in Cent angegeben wird. 
