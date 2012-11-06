@@ -3,9 +3,9 @@ package Velo;
 /**
  *  
  * "Bike" modelliert ein Fahrrad. 
- * Notwendig daf웦 sind:
+ * Notwendig daf체r sind:
  * Gangschaltung und Bereifung, Rahmenmaterial, Modellname, 
- * Zubeh쉜 und Preis.
+ * Zubeh철r und Preis.
  */
 public class Bike {
 
@@ -18,7 +18,7 @@ public class Bike {
 	private boolean light;
 
 	/**
-	 * Konstruktor f웦 "Bike".
+	 * Konstruktor f체r "Bike".
 	 * 
 	 * @param gears
 	 * @param wheels
@@ -40,14 +40,14 @@ public class Bike {
 	}
 
 	/**
-	 * Gibt den Gesamtpreis zur웒k. Returns
+	 * Gibt den Gesamtpreis zur혺ck. Returns
 	 */
 	public int getPrice() {
 		return this.price + gears.getPrice() + wheels.getPrice();
 	}
 
 	/**
-	 * Pr웖t ob ein Fahrrad f웦 den Verkehr geeignet ist.
+	 * Pr체ft ob ein Fahrrad f체r den Verkehr geeignet ist.
 	 * 
 	 * @return boolean
 	 */
