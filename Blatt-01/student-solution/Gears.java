@@ -1,10 +1,10 @@
 package Velo;
 
 /**
- * Die vorderen Kettenr둪er und die Ritzel hinten
+ * Die vorderen Kettenr채der und die Ritzel hinten
  * modellieren die Gangschaltung eines Fahrrads. 
- * Die Anzahl der vorederen Kettenr둪er ist beschr둵kt von 1 bis 3 
- * und die Anzahl der Ritzel hinten ist beschr둵kt von 1 bis 10.
+ * Die Anzahl der vorederen Kettenr채der ist beschr채nkt von 1 bis 3 
+ * und die Anzahl der Ritzel hinten ist beschr채nkt von 1 bis 10.
  *
  */
 public class Gears {
@@ -19,7 +19,7 @@ public class Gears {
 	private int price;
 
 	/**
-	 * Konstruktor f웦 "Gears".
+	 * Konstruktor f체r "Gears".
 	 * @param chainWheelNr
 	 * @param ritzNr
 	 * @param price
@@ -40,8 +40,8 @@ public class Gears {
 			this.chainWheelNr = chainWheelNr;
 		} else {
 			System.out.println(chainWheelNr
-			+ "als Anzahl der Kettenr둪er ist nicht g웞tig." +
-			" Die Anzahl muss min 1 und max 3 betragen. Bitte Wert 둵dern.");
+			+ "als Anzahl der Kettenr채der ist nicht g체ltig." +
+			" Die Anzahl muss min 1 und max 3 betragen. Bitte Wert 채ndern.");
 		}
 	}
 
@@ -54,8 +54,8 @@ public class Gears {
 			this.ritzNr = ritzNr;
 		} else {
 			System.out.println(ritzNr
-			+ " als Anzahl der Ritzl ist nicht g웞tig." +
-			" Die Anzahl muss min 1 und max 10 betragen. Bitte Wert 둵dern.");
+			+ " als Anzahl der Ritzl ist nicht g체ltig." +
+			" Die Anzahl muss min 1 und max 10 betragen. Bitte Wert 채ndern.");
 		}
 	}
 
