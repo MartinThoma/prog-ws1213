@@ -17,8 +17,8 @@ public class Bike {
 
     private final String modelId;
 
-    private final boolean bell;
-    private final boolean lights;
+    private final boolean hasBell;
+    private final boolean hasLights;
 
     /** Price of the bike in cents. */
     private int price;
@@ -40,15 +40,15 @@ public class Bike {
             break;
         }
         this.modelId = modelId;
-        this.bell = bell;
-        this.lights = lights;
+        this.hasBell = bell;
+        this.hasLights = lights;
     }
 
     /**
-     * @return true if the bike has a bell and lights
+     * @return true if the bike has a hasBell and hasLights
      */
     boolean isStreetLegal() {
-        return bell && lights;
+        return hasBell && hasLights;
     }
 
     /**
