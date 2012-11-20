@@ -21,10 +21,9 @@ public final class Tribonacci {
     public static void main(final String[] args) {
         int a = 1, b = 1, c = 1;
         for (int i = 4; i <= 37; i++) {
-            int d = a + b + c;
             a = b;
             b = c;
-            c = d;
+            c = a + b + c;
         }
         System.out.println(c);
     }
