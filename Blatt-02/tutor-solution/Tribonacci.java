@@ -21,17 +21,13 @@ public final class Tribonacci {
      */
     public static int getTribonacciNr(final int n) {
         int a = 1, b = 1, c = 1;
-<<<<<<< HEAD
         // start with 4, as we already have calculated 3
         // tribonacci numbers
         for (int i = 4; i <= n; i++) {
             int d = a + b + c;
-=======
-        for (int i = 4; i <= 37; i++) {
->>>>>>> b1c25a7f77f7fea601fa16708761887a4b693859
             a = b;
             b = c;
-            c = a + b + c;
+            c = d;
         }
         return c;
     }
@@ -39,11 +35,10 @@ public final class Tribonacci {
     /**
      * Command line interface.
      *
-     * @param args
-     *            The command line parameters.
+     * @param args The command line parameters.
      */
     public static void main(final String[] args) {
-        System.out.println(37);
+        System.out.println(getTribonacciNr(37));
     }
 }
 
