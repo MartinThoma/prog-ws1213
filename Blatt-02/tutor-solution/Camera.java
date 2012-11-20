@@ -22,17 +22,6 @@ class Camera {
     }
 
     /**
-     * Check two doubles for equality.
-     *
-     * @param fp1 first floating point number
-     * @param fp2 second floating point number
-     * @return {@code true} if both floats are equal, otherwise {@code false}
-     */
-    private boolean fpEquals(final double fp1, final double fp2) {
-        return Math.abs(fp1 - fp2) < EPSILON;
-    }
-
-    /**
      * Adjust objective to get the optimum focus.
      * The optimum focus is determined by the highest contrast.
      */
@@ -52,9 +41,7 @@ class Camera {
             stepLeft = false;
         }
 
-        // loop until optimum passed
-        while (objective.getContrast() > contrast
-                && !fpEquals(contrast, objective.getContrast())) {
+        while (isOptimumFound(contrast)) {
             contrast = objective.getContrast();
             if (stepLeft) {
                 objective.stepLeft();
@@ -63,14 +50,33 @@ class Camera {
             }
         }
 
-        // optional correction-move back
-        if (!fpEquals(contrast, objective.getContrast())) {
+        if (isOptionalMoveBackRequired(contrast)) {
             if (stepLeft) {
                 objective.stepRight();
             } else {
                 objective.stepLeft();
             }
         }
+    }
+
+    /**
+     * Check two doubles for equality.
+     *
+     * @param fp1 first floating point number
+     * @param fp2 second floating point number
+     * @return {@code true} if both floats are equal, otherwise {@code false}
+     */
+    private boolean fpEquals(final double fp1, final double fp2) {
+        return Math.abs(fp1 - fp2) < EPSILON;
+    }
+
+    private boolean isOptimumFound(final double contrast) {
+        return objective.getContrast() > contrast
+                && !fpEquals(contrast, objective.getContrast());
+    }
+
+    private boolean isOptionalMoveBackRequired(final double contrast) {
+        return !fpEquals(contrast, objective.getContrast());
     }
 }
 

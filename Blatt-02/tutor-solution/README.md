@@ -11,6 +11,6 @@ schicken.
 
 Hinweise
 --------
-* '''BikeShop.java''': Normalerweise würde man hier eine
+* *BikeShop.java*: Normalerweise würde man hier eine
   [ArrayList](http://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html)
   verwenden. Aber hier durfte man ja keine Library-Funktionen nutzen.

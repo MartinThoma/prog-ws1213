@@ -21,13 +21,17 @@ public final class Tribonacci {
      */
     public static int getTribonacciNr(final int n) {
         int a = 1, b = 1, c = 1;
+<<<<<<< HEAD
         // start with 4, as we already have calculated 3
         // tribonacci numbers
         for (int i = 4; i <= n; i++) {
             int d = a + b + c;
+=======
+        for (int i = 4; i <= 37; i++) {
+>>>>>>> b1c25a7f77f7fea601fa16708761887a4b693859
             a = b;
             b = c;
-            c = d;
+            c = a + b + c;
         }
         return c;
     }

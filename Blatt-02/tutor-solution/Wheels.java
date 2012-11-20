@@ -27,10 +27,24 @@ class Wheels {
     }
 
     /**
-     * @return the price of the wheels
+     * @return the price of the wheels in cent
      */
     int getPrice() {
         return price;
+    }
+
+    /**
+     * @return the diameter in mm
+     */
+    public int getDiameter() {
+        return this.diameter;
+    }
+
+    /**
+     * @return the size of the wheel in mm
+     */
+    public double getWheelsSize() {
+        return this.wheelsSize;
     }
 }
 
