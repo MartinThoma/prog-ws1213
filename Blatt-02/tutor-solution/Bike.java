@@ -11,7 +11,7 @@ public class Bike {
 
     enum Material {
         ALU, STEEL, TITAN
-    };
+    }
 
     private final Material material;
 
@@ -29,15 +29,15 @@ public class Bike {
         this.wheels = wheels;
         this.material = material;
         switch (material) {
-        case ALU:
-            price = 20000;
-            break;
-        case STEEL:
-            price = 30000;
-            break;
-        case TITAN:
-            price = 40000;
-            break;
+            case ALU:
+                price = 20000;
+                break;
+            case STEEL:
+                price = 30000;
+                break;
+            case TITAN:
+                price = 40000;
+                break;
         }
         this.modelId = modelId;
         this.hasBell = bell;
@@ -57,6 +57,20 @@ public class Bike {
      */
     int getPrice() {
         return price + gears.getPrice() + wheels.getPrice();
+    }
+
+    /**
+     * @return the material of this bike
+     */
+    public Material getMaterial() {
+        return this.material;
+    }
+
+    /**
+     * @return the model id of this bike
+     */
+    public String getModelId() {
+        return this.modelId;
     }
 }
 
