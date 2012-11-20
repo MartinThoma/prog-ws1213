@@ -18,7 +18,7 @@ public class Gears {
     /** Price in cents. */
     private final int price;
 
-    Gears(int frontSprockets, int rearSprockets, int price) {
+    public Gears(int frontSprockets, int rearSprockets, int price) {
         setSprockets(frontSprockets, rearSprockets);
         this.price = price;
     }
