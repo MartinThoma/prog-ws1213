@@ -14,19 +14,32 @@ public final class Tribonacci {
     }
 
     /**
-     * Command line interface.
+     * This method calculates the n'th tribonacci number.
      *
-     * @param args The command line parameters.
+     * @param n A number that is not negative
+     * @return The n'th tribonacci number
      */
-    public static void main(final String[] args) {
+    public static int getTribonacciNr(final int n) {
         int a = 1, b = 1, c = 1;
-        for (int i = 4; i <= 37; i++) {
+        // start with 4, as we already have calculated 3
+        // tribonacci numbers
+        for (int i = 4; i <= n; i++) {
             int d = a + b + c;
             a = b;
             b = c;
             c = d;
         }
-        System.out.println(c);
+        return c;
+    }
+
+    /**
+     * Command line interface.
+     *
+     * @param args
+     *            The command line parameters.
+     */
+    public static void main(final String[] args) {
+        System.out.println(37);
     }
 }
 
