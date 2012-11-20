@@ -1,57 +1,64 @@
 /**
- * A bike model in Java. 
- * This class models the gears (restricted to derailleur gears)
+ * A bike model in Java. This class models the gears (restricted to derailleur
+ * gears)
  *
- * @author Markus Iser
+ * @author Markus Iser, Martin Thoma
  * @version 1.0
  */
 
-class Gears {
-	int sprockets = 3; //Kettenräder vorne, range 1 to 3
-	int rearSprockets = 9; //Kettenräder hinten, range 1 to 10
-	
-	int price;
-	
-	Gears(int sprockets, int rearSprockets, int price) {
-		this.sprockets = sprockets;
-		this.rearSprockets = rearSprockets;
-		this.price = price;
-	}
-	
-	/**
-	 * sets the sprocket numbers, uses default-values if consisteny criteria are not met
-	 */
-	void setSprockets(int sprockets, int rearSprockets) {
-		this.sprockets = sprockets;
-		this.rearSprockets = rearSprockets;
-		if (this.sprockets < 1) {
-			this.sprockets = 1;
-		}
-		else if (this.sprockets > 3) {
-			this.sprockets = 3;
-		}
-		if (this.rearSprockets < 1 || this.rearSprockets > 9) {
-			this.rearSprockets = this.sprockets * 3;
-		}
-		if (this.rearSprockets < this.sprockets) {
-			this.rearSprockets = this.sprockets;
-		} 
-		else if (this.rearSprockets > 3 * this.sprockets) {
-			this.rearSprockets = 3 * this.sprockets;
-		}
-	}
-	
-	/**
-	 * @return the number of gears as the number of sprocket-combinations
-	 */
-	int getNumberOfGears() {
-		return sprockets * rearSprockets;
-	}
-	
-	/**
-	 * @return the price of the gears
-	 */
-	int getPrice() {
-		return price;
-	}
-}	
+public class Gears {
+    public static final int MIN_FRONT_SPROCKETS = 1;
+    public static final int MAX_FRONT_SPROCKETS = 3;
+    public static final int MIN_REAR_SPROCKETS = 1;
+    public static final int MAX_REAR_SPROCKETS = 10;
+
+    private int frontSprockets;
+    private int rearSprockets;
+
+    /** Price in cents. */
+    private final int price;
+
+    Gears(int frontSprockets, int rearSprockets, int price) {
+        setSprockets(frontSprockets, rearSprockets);
+        this.price = price;
+    }
+
+    /**
+     * Sets the sprocket numbers.
+     * Uses default-values if consisteny criteria are not met.
+     * @param sprockets
+     * @param rearSprockets
+     */
+    void setSprockets(int sprockets, int rearSprockets) {
+        this.frontSprockets = sprockets;
+        this.rearSprockets = rearSprockets;
+        if (this.frontSprockets < 1) {
+            this.frontSprockets = 1;
+        } else if (this.frontSprockets > 3) {
+            this.frontSprockets = 3;
+        }
+        if (this.rearSprockets < 1 || this.rearSprockets > 9) {
+            this.rearSprockets = this.frontSprockets * 3;
+        }
+        if (this.rearSprockets < this.frontSprockets) {
+            this.rearSprockets = this.frontSprockets;
+        } else if (this.rearSprockets > 3 * this.frontSprockets) {
+            this.rearSprockets = 3 * this.frontSprockets;
+        }
+    }
+
+    /**
+     * @return the number of gears as the number of sprocket-combinations
+     */
+    int getNumberOfGears() {
+        return frontSprockets * rearSprockets;
+    }
+
+    /**
+     * @return the price of the gears
+     */
+    int getPrice() {
+        return price;
+    }
+}
+

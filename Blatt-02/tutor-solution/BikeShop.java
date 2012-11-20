@@ -1,50 +1,66 @@
 /**
- * Models a bike shop with basic buy and sell functions
- * 
- * @author Markus Iser
+ * Models a bike shop with basic buy and sell functions.
+ *
+ * @author Markus Iser, Martin Thoma
  * @version 1.0
  */
 class BikeShop {
-	Bike[] stock;
-	int nofBikes; 
-		
-	public BikeShop() {
-		stock = new Bike[10];
-		for (int i = 0; i < 10; i++) {
-			stock[i] = null;
-		}
-		nofBikes = 0;
-	}
-	
-	/**
-	 * adds a new bike to the stock
-	 */
-	public void buy(Bike bike) {
-		stock[nofBikes] = bike;
-		nofBikes++;
-		if (nofBikes == stock.length) {
-			Bike[] newStock = new Bike[stock.length + 5];
-			for (int i = 0; i < stock.length; i++) {
-				newStock[i] = stock[i];
-			}
-			this.stock = newStock;
-		}
-	}
-	
-	/**
-	 * removes the bike at position k from the stock
-	 */
-	public void sell(int k) {
-		if (k < nofBikes) {
-			nofBikes--;
-			stock[k] = stock[nofBikes];
-		}
-		if (nofBikes < stock.length - 5) {
-			Bike[] newStock = new Bike[stock.length - 5];
-			for (int i = 0; i < newStock.length; i++) {
-				newStock[i] = stock[i];
-			}
-			this.stock = newStock;
-		}
-	}
+    /** By how much should the size of the array be changed? */
+    private static final int RESIZE_ARRAY_BY = 5;
+
+    /** How many bikes should the shop initialy be able to store? */
+    private static final int INITIAL_SHOP_SIZE = 10;
+
+    /** Represents the bike warehouse, that can hold bikes. */
+    private Bike[] warehouse;
+
+    /** The number of bikes that are currently at the warehouse. */
+    private int nrOfBikes;
+
+    /**
+     * Initialize a bikeshop with a capacity of INITIAL_SHOP_SIZE
+     * bikes, but no stored bikes.
+     */
+    public BikeShop() {
+        warehouse = new Bike[INITIAL_SHOP_SIZE];
+        for (int i = 0; i < INITIAL_SHOP_SIZE; i++) {
+            warehouse[i] = null;
+        }
+        nrOfBikes = 0;
+    }
+
+    /**
+     * Add a new bike to the warehouse.
+     * @param bike The new bike you want to add.
+     */
+    public void buy(final Bike bike) {
+        warehouse[nrOfBikes] = bike;
+        nrOfBikes++;
+        if (nrOfBikes == warehouse.length) {
+            Bike[] newStock = new Bike[warehouse.length + RESIZE_ARRAY_BY];
+            for (int i = 0; i < warehouse.length; i++) {
+                newStock[i] = warehouse[i];
+            }
+            this.warehouse = newStock;
+        }
+    }
+
+    /**
+     * Removes the bike at position bikePlace from the warehouse.
+     * @param bikePlace The position of the bike in the warehouse.
+     */
+    public void sell(final int bikePlace) {
+        if (bikePlace < nrOfBikes) {
+            nrOfBikes--;
+            warehouse[bikePlace] = warehouse[nrOfBikes];
+        }
+        if (nrOfBikes < warehouse.length - RESIZE_ARRAY_BY) {
+            Bike[] newStock = new Bike[warehouse.length - RESIZE_ARRAY_BY];
+            for (int i = 0; i < newStock.length; i++) {
+                newStock[i] = warehouse[i];
+            }
+            this.warehouse = newStock;
+        }
+    }
 }
+
