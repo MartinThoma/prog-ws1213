@@ -23,9 +23,6 @@ class BikeShop {
      */
     public BikeShop() {
         warehouse = new Bike[INITIAL_SHOP_SIZE];
-        for (int i = 0; i < INITIAL_SHOP_SIZE; i++) {
-            warehouse[i] = null;
-        }
         nrOfBikes = 0;
     }
 
@@ -38,9 +35,7 @@ class BikeShop {
         nrOfBikes++;
         if (nrOfBikes == warehouse.length) {
             Bike[] newStock = new Bike[warehouse.length + RESIZE_ARRAY_BY];
-            for (int i = 0; i < warehouse.length; i++) {
-                newStock[i] = warehouse[i];
-            }
+            System.arraycopy(warehouse, 0, newStock, 0, warehouse.length);
             this.warehouse = newStock;
         }
     }
@@ -56,9 +51,7 @@ class BikeShop {
         }
         if (nrOfBikes < warehouse.length - RESIZE_ARRAY_BY) {
             Bike[] newStock = new Bike[warehouse.length - RESIZE_ARRAY_BY];
-            for (int i = 0; i < newStock.length; i++) {
-                newStock[i] = warehouse[i];
-            }
+            System.arraycopy(warehouse, 0, newStock, 0, newStock.length);
             this.warehouse = newStock;
         }
     }
