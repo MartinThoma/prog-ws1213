@@ -1,6 +1,5 @@
 /**
- * A bike model in Java. This class models the gears (restricted to derailleur
- * gears)
+ * This class models the gears. It is restricted to derailleur gears.
  *
  * @author Markus Iser, Martin Thoma
  * @version 1.0
@@ -18,7 +17,7 @@ public class Gears {
     /** Price in cents. */
     private final int price;
 
-    public Gears(int frontSprockets, int rearSprockets, int price) {
+    Gears(int frontSprockets, int rearSprockets, int price) {
         setSprockets(frontSprockets, rearSprockets);
         this.price = price;
     }

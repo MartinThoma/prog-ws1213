@@ -1,9 +1,8 @@
 /**
- * The class Tribonacci calculates the first 37 numbers of the tribonacci
+ * The class Tribonacci calculates the 37th number of the tribonacci
  * sequence.
  *
  * @author Markus Iser, Martin Thoma
- * @version 1.0
  */
 public final class Tribonacci {
 

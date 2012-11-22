@@ -1,5 +1,5 @@
 /**
- * A bike model in Java
+ * A bike model in Java.
  *
  * @author Markus Iser, Martin Thoma
  * @version 1.0
@@ -45,17 +45,19 @@ public class Bike {
     }
 
     /**
-     * @return true if the bike has a hasBell and hasLights
+     * Check if the bike is legal for usage on streets.
+     * @return {@code true} if the bike has a bell and has lights
      */
-    boolean isStreetLegal() {
+    public boolean isStreetLegal() {
         return hasBell && hasLights;
     }
 
     /**
-     * @return the sum of the bike's base-price and the price of the wheels and
-     *         gears
+     * Get the price of the bike.
+     * @return the sum of the bike's base-price and the price of the
+     *         wheels and gears
      */
-    int getPrice() {
+    public int getPrice() {
         return price + gears.getPrice() + wheels.getPrice();
     }
 

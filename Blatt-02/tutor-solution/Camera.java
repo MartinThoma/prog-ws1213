@@ -4,7 +4,7 @@
  * @author Markus Iser, Martin Thoma
  *
  */
-class Camera {
+public class Camera {
     /** This epsilon is used for internal float comparisons. */
     private static final double EPSILON = 1E-6;
 
@@ -19,6 +19,17 @@ class Camera {
      */
     public Camera(final Objective objective) {
         this.objective = objective;
+    }
+
+    /**
+     * Check two doubles for equality.
+     *
+     * @param fp1 first floating point number
+     * @param fp2 second floating point number
+     * @return {@code true} if both floats are equal, otherwise {@code false}
+     */
+    private boolean fpEquals(final double fp1, final double fp2) {
+        return Math.abs(fp1 - fp2) < EPSILON;
     }
 
     /**
@@ -41,7 +52,9 @@ class Camera {
             stepLeft = false;
         }
 
-        while (isOptimumFound(contrast)) {
+        // loop until optimum passed
+        while (objective.getContrast() > contrast
+                && !fpEquals(contrast, objective.getContrast())) {
             contrast = objective.getContrast();
             if (stepLeft) {
                 objective.stepLeft();
@@ -50,33 +63,14 @@ class Camera {
             }
         }
 
-        if (isOptionalMoveBackRequired(contrast)) {
+        // optional correction-move back
+        if (!fpEquals(contrast, objective.getContrast())) {
             if (stepLeft) {
                 objective.stepRight();
             } else {
                 objective.stepLeft();
             }
         }
-    }
-
-    /**
-     * Check two doubles for equality.
-     *
-     * @param fp1 first floating point number
-     * @param fp2 second floating point number
-     * @return {@code true} if both floats are equal, otherwise {@code false}
-     */
-    private boolean fpEquals(final double fp1, final double fp2) {
-        return Math.abs(fp1 - fp2) < EPSILON;
-    }
-
-    private boolean isOptimumFound(final double contrast) {
-        return objective.getContrast() > contrast
-                && !fpEquals(contrast, objective.getContrast());
-    }
-
-    private boolean isOptionalMoveBackRequired(final double contrast) {
-        return !fpEquals(contrast, objective.getContrast());
     }
 }
 
