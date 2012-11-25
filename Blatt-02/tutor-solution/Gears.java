@@ -31,17 +31,21 @@ public class Gears {
     void setSprockets(int sprockets, int rearSprockets) {
         this.frontSprockets = sprockets;
         this.rearSprockets = rearSprockets;
-        if (this.frontSprockets < 1) {
+
+        if (!(this.frontSprockets >= 1)) { // A.1
             this.frontSprockets = 1;
-        } else if (this.frontSprockets > 3) {
+        } else if (!(this.frontSprockets < 4)) { // A.2
             this.frontSprockets = 3;
         }
-        if (this.rearSprockets < 1 || this.rearSprockets > 9) {
+
+        // B.1, B.2
+        if (this.rearSprockets < 1 || this.rearSprockets > 9) { 
             this.rearSprockets = this.frontSprockets * 3;
         }
-        if (this.rearSprockets < this.frontSprockets) {
+
+        if (this.rearSprockets < this.frontSprockets) { // C.1
             this.rearSprockets = this.frontSprockets;
-        } else if (this.rearSprockets > 3 * this.frontSprockets) {
+        } else if (this.rearSprockets > 3 * this.frontSprockets) { // C.2
             this.rearSprockets = 3 * this.frontSprockets;
         }
     }
