@@ -33,24 +33,37 @@ public class Camera {
     }
 
     /**
-     * Adjust objective to get the optimum focus.
-     * The optimum focus is determined by the highest contrast.
+     * Determine if the contrast on the left is higher than on the current
+     * position.
+     *
+     * @param objective the objective you are manipulating
+     * @return {@code true} the contrast on the left of the current position is
+     *         higher, otherwise {@code false}
+     */
+    private boolean isLeftContrastHigher(Objective objective) {
+        double contrast = objective.getContrast();
+        objective.stepLeft();
+        double contrastNew = objective.getContrast();
+        objective.stepRight();
+
+        // check if the contrast - according to our EPSILON - is the same
+        if (fpEquals(contrast, contrastNew)) {
+            return false;
+        }
+
+        return contrastNew > contrast;
+    }
+
+    /**
+     * Adjust objective to get the optimum focus. The optimum focus is
+     * determined by the highest contrast.
      */
     public void autofocus() {
         boolean stepLeft;
-        double contrast;
+        double contrast = objective.getContrast();
 
         // determine direction
-        contrast = objective.getContrast();
-        objective.stepLeft();
-
-        if (objective.getContrast() > contrast) {
-            stepLeft = true;
-        } else {
-            contrast = objective.getContrast();
-            objective.stepRight();
-            stepLeft = false;
-        }
+        stepLeft = isLeftContrastHigher(objective);
 
         // loop until optimum passed
         while (objective.getContrast() > contrast
