@@ -14,9 +14,6 @@ class Contrast {
      */
     int getContrast(byte[][] image) {
         int[] histogram = new int[256];
-        for (int i = 0; i < 256; i++) {
-            histogram[i] = 0;
-        }
         for (int i = 0; i < image.length; i++) {
             for (int j = 0; j < image[i].length; j++) {
                 histogram[image[i][j]]++;
