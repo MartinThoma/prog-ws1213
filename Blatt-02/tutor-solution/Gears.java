@@ -38,8 +38,10 @@ public class Gears {
             this.frontSprockets = 3;
         }
 
-        // B.1, B.2
-        if (this.rearSprockets < 1 || this.rearSprockets > 9) { 
+        if (this.rearSprockets < 1) { // B.1
+            this.rearSprockets = this.frontSprockets;
+        }
+        if (this.rearSprockets > 9) { // B.2
             this.rearSprockets = this.frontSprockets * 3;
         }
 

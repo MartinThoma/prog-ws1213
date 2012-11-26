@@ -44,7 +44,11 @@ class BikeShop {
      * Removes the bike at position bikePlace from the warehouse.
      * @param bikePlace The position of the bike in the warehouse.
      */
-    public void sell(final int bikePlace) {
+    public Bike sell(final int bikePlace) {
+        if (bikePlace < 0 || bikePlace >= warehouse.length) {
+            return null;
+        }
+        Bike b = warehouse[bikePlace];
         if (bikePlace < nrOfBikes) {
             nrOfBikes--;
             warehouse[bikePlace] = warehouse[nrOfBikes];
@@ -54,6 +58,7 @@ class BikeShop {
             System.arraycopy(warehouse, 0, newStock, 0, newStock.length);
             this.warehouse = newStock;
         }
+        return b;
     }
 }
 
