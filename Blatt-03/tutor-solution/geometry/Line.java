@@ -19,7 +19,7 @@ public class Line {
 
     public Point interpolate(double t) {
         return new Point((1 - t) * start.getX() + t * end.getX(),
-                         (1 - t) * start.getY() + t * end.getY());
+                (1 - t) * start.getY() + t * end.getY());
     }
 
     public Line mirrorAt(Point point) {

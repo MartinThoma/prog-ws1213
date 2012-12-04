@@ -37,12 +37,16 @@ public class Point {
     }
 
     public Point mirrorAt(Point point) {
-        return new Point(2 * point.getX() - this.x, 2 * point.getY() - this.y);
+        return new Point(2 * point.getX() - this.x, 2 * point.getY()
+                - this.y);
     }
 
+    /**
+     * Mirror this Point at line
+     * @param line the line where you want to mirror the point
+     * @return the mirrored point
+     */
     public Point mirrorAt(Line line) {
-        // shamelessly stolen from stack overflow...
-        // don't do this at home
         Point p1 = line.getStartPoint();
         Point p2 = line.getEndPoint();
 
