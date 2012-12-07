@@ -34,16 +34,21 @@ public class SinglyLinkedList {
     }
 
     public void remove(int number) {
-        Node previous = head;
-        Node currentNode = head;
+        if (isEqual(head, number) {
+            // Bitte nicht vergessen!
+            head = head.next;
+        } else {
+            Node previous = head;
+            Node currentNode = head;
 
-        while (!isEqual(currentNode, number) && currentNode.next != null) {
-            previous = currentNode;
-            currentNode = currentNode.next;
-        }
+            while (!isEqual(currentNode, number) && currentNode.next != null) {
+                previous = currentNode;
+                currentNode = currentNode.next;
+            }
 
-        if (currentNode.next != null) {
-            previous.next = currentNode.next;
+            if (currentNode.next != null) {
+                previous.next = currentNode.next;
+            }
         }
     }
 

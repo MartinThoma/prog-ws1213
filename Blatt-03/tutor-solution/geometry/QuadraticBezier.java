@@ -22,21 +22,20 @@ public class QuadraticBezier {
     }
 
     public Point interpolate(double t) {
-        Line temp = new Line(first.interpolate(t), second.interpolate(t));
+        Line temp = new Line(first.interpolate(t), second
+                .interpolate(t));
         return temp.interpolate(t);
     }
 
     public QuadraticBezier mirrorAt(Point point) {
-        return new QuadraticBezier(
-            first.getStartPoint().mirrorAt(point),
-            first.getEndPoint().mirrorAt(point),
-            second.getEndPoint().mirrorAt(point));
+        return new QuadraticBezier(first.getStartPoint().mirrorAt(
+                point), first.getEndPoint().mirrorAt(point), second
+                .getEndPoint().mirrorAt(point));
     }
 
     public QuadraticBezier mirrorAt(Line line) {
-        return new QuadraticBezier(
-            first.getStartPoint().mirrorAt(line),
-            first.getEndPoint().mirrorAt(line),
-            second.getEndPoint().mirrorAt(line));
+        return new QuadraticBezier(first.getStartPoint().mirrorAt(
+                line), first.getEndPoint().mirrorAt(line), second
+                .getEndPoint().mirrorAt(line));
     }
 }

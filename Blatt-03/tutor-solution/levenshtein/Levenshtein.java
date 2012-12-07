@@ -2,7 +2,7 @@ package levenshtein;
 
 /**
  * A class to calculate a modified version of the levenshtein distance.
- *
+ * 
  * @author Markus Iser
  * @version 1.0
  */
@@ -24,11 +24,9 @@ public class Levenshtein {
 
     /**
      * Initializes the Levenshtein Object with the two given words.
-     *
-     * @param word1
-     *            first word
-     * @param word2
-     *            second word
+     * 
+     * @param word1 first word
+     * @param word2 second word
      */
     public Levenshtein(String word1, String word2) {
         this.word1 = "." + word1.toLowerCase();
@@ -39,7 +37,7 @@ public class Levenshtein {
 
     /**
      * Calculates the Levenshtein-matrix.
-     *
+     * 
      * @return the Levenshtein distance of word1 and word2
      */
     public int getDistance() {
@@ -58,11 +56,9 @@ public class Levenshtein {
     /**
      * Helper function, encodes a kind of borderless behaviour of the
      * Levenshtein-matrix.
-     *
-     * @param i
-     *            row-index or the coordinate in word2
-     * @param j
-     *            column-index or the coordinate in word1
+     * 
+     * @param i row-index or the coordinate in word2
+     * @param j column-index or the coordinate in word1
      * @return the matrix-value at the given coordinates or Integer.MAX_VALUE-1
      *         if out of bounds
      */
@@ -76,8 +72,7 @@ public class Levenshtein {
     }
 
     /**
-     * @param test
-     *            the character to check for being umlaut
+     * @param test the character to check for being umlaut
      * @return {@code true} if the given character is a german umlaut, otherwise
      *         {@code false}
      */
@@ -90,10 +85,9 @@ public class Levenshtein {
     }
 
     /**
-     * @param test
-     *            the character to check for being vowel
-     * @return {@code true} if the given character is a german vowel,
-     *         otherwise {@code false}
+     * @param test the character to check for being vowel
+     * @return {@code true} if the given character is a german vowel, otherwise
+     *         {@code false}
      */
     private boolean isVowel(char test) {
         for (int i = 0; i < vowels.length; i++) {
@@ -104,10 +98,8 @@ public class Levenshtein {
     }
 
     /**
-     * @param i
-     *            row-index or the coordinate in word2
-     * @param j
-     *            column-index or the coordinate in word1
+     * @param i row-index or the coordinate in word2
+     * @param j column-index or the coordinate in word1
      * @return the total cost if a deletion took place at the given coordinates
      */
     private int delete(int i, int j) {
@@ -121,10 +113,8 @@ public class Levenshtein {
     }
 
     /**
-     * @param i
-     *            row-index or the coordinate in word2
-     * @param j
-     *            column-index or the coordinate in word1
+     * @param i row-index or the coordinate in word2
+     * @param j column-index or the coordinate in word1
      * @return the total cost if an insertion took place at the given
      *         coordinates
      */
@@ -139,10 +129,8 @@ public class Levenshtein {
     }
 
     /**
-     * @param i
-     *            row-index or the coordinate in word2
-     * @param j
-     *            column-index or the coordinate in word1
+     * @param i row-index or the coordinate in word2
+     * @param j column-index or the coordinate in word1
      * @return the total cost if a replacement (for the non-equal case) took
      *         place at the given coordinates
      */
@@ -153,9 +141,8 @@ public class Levenshtein {
 
     /**
      * Testing it.
-     *
-     * @param args
-     *            commandline arguments (should be used with two arguments: two
+     * 
+     * @param args commandline arguments (should be used with two arguments: two
      *            words for which the levenshtein-matrix is calculated)
      */
     public static void main(String[] args) {
