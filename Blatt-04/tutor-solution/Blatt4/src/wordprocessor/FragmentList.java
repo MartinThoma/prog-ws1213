@@ -4,7 +4,7 @@ package wordprocessor;
 /**
  * A doubly linked list for storing Fragments.
  *
- * @author  Yasmin
+ * @author  anonymer Student und Tutoren
  * @version  1.2
  */
 public class FragmentList {

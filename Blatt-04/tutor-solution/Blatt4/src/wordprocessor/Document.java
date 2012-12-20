@@ -6,7 +6,7 @@ package wordprocessor;
  * Stores a fragment-list and provides methods to output the document.
  * Can create a document-cursor to edit the document.
  *
- * @author  Yasmin
+ * @author  anonymer Student und Tutoren
  * @version  1.2
  */
 

@@ -5,7 +5,7 @@ package wordprocessor;
  *
  * Currently this is only bold and italic.
  *
- * @author  Yasmin
+ * @author  anonymer Student und Tutoren
  * @version  1.2
  */
 public class Style {

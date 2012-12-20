@@ -6,7 +6,7 @@ package wordprocessor;
  * Wraps a StringBuffer object containing the fragment's text.
  * Provides methods to edit that text and to change the style.
  *
- * @author  Yasmin
+ * @author  anonymer Student und Tutoren
  * @version  1.2
  */
 public class Fragment {

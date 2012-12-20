@@ -5,7 +5,7 @@ package wordprocessor;
  * Provides means to iterate over a Document without having to care for
  * how the document is split into Fragments.
  *
- * @author  Yasmin
+ * @author  anonymer Student und Tutoren
  * @version  1.2
  */
 

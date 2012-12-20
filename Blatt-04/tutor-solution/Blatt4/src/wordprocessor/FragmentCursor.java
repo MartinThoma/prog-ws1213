@@ -7,7 +7,7 @@ package wordprocessor;
  * allows insertion and deletion of characters next to it and it also allows
  * splitting Fragments into two.
  *
- * @author  Yasmin
+ * @author  anonymer Student und Tutoren
  * @version  1.2
  */
 public class FragmentCursor {
