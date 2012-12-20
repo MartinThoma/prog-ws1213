@@ -38,15 +38,13 @@ public class Document {
      * @return The number of characters in the document.
      */
     public int length() {
-        int result = 0;
-        Fragment nextFragment = this.fragments.cursor().getFragment();
-        result += nextFragment.length();
-        while (this.fragments.cursor().hasNext()) {
-            this.fragments.cursor().next();
-            nextFragment = this.fragments.cursor().getFragment();
-            result += nextFragment.length();
+        int length = 0;
+        DocumentCursor cursor = newCursorAt(0);
+        while (cursor.hasRight()) {
+            length = length + 1;
+            cursor.moveRight();
         }
-        return result;
+        return length;
     }
 
     /**
