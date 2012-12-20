@@ -27,6 +27,7 @@ public class FragmentList {
      * empty.
      */
     public Fragment getFirstElement() {
+        Helper.abortIf(this.size() == 0, "An empty list has no first element");
         return this.firstElement.getFragment();
     }
 

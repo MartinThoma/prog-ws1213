@@ -223,6 +223,12 @@ public class AdditionalTest {
 
     // part B
     @Test(expected = TestException.class, timeout = 1000)
+    public void getFirstOfEmpty() {
+        FragmentList f = new FragmentList();
+        f.getFirstElement();
+    }
+
+    @Test(expected = TestException.class, timeout = 1000)
     public void abortInFragmentListInCursor() {
         FragmentList f = new FragmentList();
         f.cursor();

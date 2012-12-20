@@ -81,6 +81,22 @@ public class StyleDocumentCursorTest {
 		assertEquals("Style not handled properly", "<b>Hello, </b><b><i>World</i></b><b>!</b>", document.toHTML());
 	}
 	
+	/**
+	 * Additional Test from Elias Holzmann
+	 * uncovered a bug in WordProcessor.java
+	 */
+	@Test(timeout = 1000)
+	public void fragmentationTestWithMultipleFragmentsToDocumentEnd() {
+		WordProcessor wp = new WordProcessor();
+		wp.insert("Hello World");
+		wp.pressShift();
+		wp.moveLeft(5);
+		wp.setBold();
+		wp.moveLeft(6);
+		wp.setItalic();
+		assertEquals("<i>Hello </i><b><i>World</i></b>", wp.toHTML());
+	}
+	
 	public static void main(String[] args) {
 		JUnitCore.main(StyleDocumentCursorTest.class.getName());
 	}

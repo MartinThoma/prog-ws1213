@@ -4,7 +4,7 @@ package wordprocessor;
  * Models the user interface of the word processor.
  *
  * @author Markus Iser, Florian Merz
- * @version 1.0
+ * @version 1.3
  */
 public class WordProcessor {
 	/** The Document opened in this WordProcessor. */
@@ -253,6 +253,11 @@ public class WordProcessor {
 		
 		// apply style-change to specified range
 		DocumentCursor.applyStyleChange(styleChange, selectionStart, selectionEnd);
+		
+		// BugFix: Wanted Implementation omits last fragment in list
+		if (!selectionEnd.hasRight()) {
+			DocumentCursor.applyStyleChange(styleChange, selectionEnd, selectionEnd);
+		}
 		
 		// create new valid cursor
 		documentCursor = document.newCursorAt(cursorPosition);
