@@ -13,7 +13,22 @@ public class AdditionalTest {
     // part A
 
     @Test(timeout = 1000)
-    public void styleMustBeEqual() {
+    public void styleMustBeEqual1() {
+        Style style1 = new Style(false, false);
+        assertTrue(style1.equals(style1));
+
+        style1 = new Style(true, false);
+        assertTrue(style1.equals(style1));
+
+        style1 = new Style(false, true);
+        assertTrue(style1.equals(style1));
+
+        style1 = new Style(true, true);
+        assertTrue(style1.equals(style1));
+    }
+
+    @Test(timeout = 1000)
+    public void styleMustBeEqual2() {
         assertTrue(new Style(false, false).equals(new Style(false, false)));
     }
 

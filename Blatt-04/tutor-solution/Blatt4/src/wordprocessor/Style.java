@@ -80,17 +80,21 @@ public class Style {
      */
     @Override
     public boolean equals(Object other) {
-        boolean result = false;
-        if (other != null && other instanceof Style && this != other) {
-            // warum this != other?
-            // wenn this == other, dann ist result doch auf jeden Fall true, oder?
-            // -0.5 Punkte
+        // Wusstest ihr, dass Eclipse das erstellen kann?
+        // Source -> Generate hashCode() and equals()
+        // Man muss trotzdem noch manuell drüber schauen, aber das
+        // meiste ist dann schon korrekt eingetragen.
 
+        boolean result = false;
+
+        if (this == other) {
+            return true;
+        } else if (other == null) {
+            return false;
+        }
+
+        if (other instanceof Style) {
             Style otherStyle = (Style) other;
-            // Wusstest du, dass eclipse dir das erstellen kann?
-            // Generate Code -> Generate hash() und equals
-            // man muss trotzdem noch manuell drüber schauen, aber das meiste ist dann schon korrekt
-            // eingetragen.
             result = this.bold == otherStyle.isBold() && this.italic == otherStyle.isItalic();
         }
         return result;
