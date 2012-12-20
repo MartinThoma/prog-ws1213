@@ -1,21 +1,20 @@
 package wordprocessor;
 
+
 /**
- * Models a text document. Stores a fragment-list and provides methods to output
- * the document. Can create a document-cursor to edit the document.
+ * Models a text document.
+ * Stores a fragment-list and provides methods to output the document.
+ * Can create a document-cursor to edit the document.
  *
- * @author KRK
- * @version 1.2
+ * @author  anonymer Student und Tutoren
+ * @version  1.2
  */
 
 public class Document {
     /** The FragmentList storing this Document's formatted text. */
     private final FragmentList fragments;
 
-    /**
-     * Creates a new Document, initialized with a single, empty Fragment of
-     * text.
-     */
+    /** Creates a new Document, initialized with a single, empty Fragment of text. */
     public Document() {
         fragments = new FragmentList();
         fragments.add(new Fragment(new Style(false, false)));
@@ -27,7 +26,7 @@ public class Document {
      *
      * @param position The position the DocumentCursor is created at.
      * @return A new DocumentCursor at distance <code>position</code> to the
-     *         start of the Document.
+     * start of the Document.
      */
     public DocumentCursor newCursorAt(int position) {
         return new DocumentCursor(fragments, position);
@@ -39,14 +38,13 @@ public class Document {
      * @return The number of characters in the document.
      */
     public int length() {
-        int output = 0;
-
-        FragmentList.Cursor tempCursor = fragments.cursor();
-        while (tempCursor.hasNext()) {
-            tempCursor.hasNext();
-            output += tempCursor.getFragment().length();
+        int length = 0;
+        DocumentCursor cursor = newCursorAt(0);
+        while (cursor.hasRight()) {
+            length = length + 1;
+            cursor.moveRight();
         }
-        return output;
+        return length;
     }
 
     /**
@@ -56,15 +54,16 @@ public class Document {
      */
     @Override
     public String toString() {
-        String output = "";
-
-        FragmentList.Cursor tempCursor = fragments.cursor();
-        output += tempCursor.getFragment().toString();
-        while (tempCursor.hasNext()) {
-            tempCursor.next();
-            output += tempCursor.getFragment().toString();
+        String result = "";
+        FragmentList.Cursor cursor = fragments.cursor();
+        Fragment nextFragment = cursor.getFragment();
+        result += nextFragment.toString();
+        while (cursor.hasNext()) {
+            cursor.next();
+            nextFragment = cursor.getFragment();
+            result += nextFragment.toString();
         }
-        return output;
+        return result;
     }
 
     /**
@@ -73,14 +72,15 @@ public class Document {
      * @return The text of the document formatted as HTML code.
      */
     public String toHTML() {
-        String output = "";
-
-        FragmentList.Cursor tempCursor = fragments.cursor();
-        output += tempCursor.getFragment().toHTML();
-        while (tempCursor.hasNext()) {
-            tempCursor.next();
-            output += tempCursor.getFragment().toHTML();
+        String result = "";
+        FragmentList.Cursor cursor = fragments.cursor();
+        Fragment nextFragment = cursor.getFragment();
+        result += nextFragment.toHTML();
+        while (cursor.hasNext()) {
+            cursor.next();
+            nextFragment = cursor.getFragment();
+            result += nextFragment.toHTML();
         }
-        return output;
+        return result;
     }
 }

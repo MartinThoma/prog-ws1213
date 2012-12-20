@@ -1,11 +1,10 @@
 package wordprocessor;
 
-
 /**
  * A doubly linked list for storing Fragments.
  *
- * @author  anonymer Student und Tutoren
- * @version  1.2
+ * @author anonymer Student und Tutoren
+ * @version 1.2
  */
 public class FragmentList {
     /** The first Element in the list. */
@@ -24,18 +23,19 @@ public class FragmentList {
      * Returns the first Element in the FragmentList.
      *
      * @return the first Element in the FragmentList, or null if the list is
-     * empty.
+     *         empty.
      */
     public Fragment getFirstElement() {
-        Helper.abortIf(this.size() == 0, "An empty list has no first element");
-        return this.firstElement.getFragment();
+        Helper.abortIf(size() == 0,
+                "An empty list has no first element");
+        return firstElement.getFragment();
     }
 
     /**
      * Returns the last Element in the FragmentList.
      *
      * @return the first Element in the FragmentList, or null if the list is
-     * empty.
+     *         empty.
      */
     public Fragment getLastElement() {
         return this.lastElement.getFragment();
@@ -44,34 +44,36 @@ public class FragmentList {
     /**
      * Appends a Fragment at the end of the list.
      *
-     * If the list is empty, the new element is the first and last element.
-     * If the list is not empty, the previously last element's successor is the new element,
-     * the new element's predecessor is the previously last element, and
-     * the new element is the list's last element.
+     * If the list is empty, the new element is the first and last element. If
+     * the list is not empty, the previously last element's successor is the new
+     * element, the new element's predecessor is the previously last element,
+     * and the new element is the list's last element.
      *
      * @param fragment The Fragment to be appended to the list.
      */
     public void add(Fragment fragment) {
         if (this.isEmpty()) {
-            Element newElement =  new Element(fragment, null, null);
-            this.firstElement = newElement;
-            this.lastElement = newElement;
+            Element newElement = new Element(fragment, null, null);
+            firstElement = newElement;
+            lastElement = newElement;
         } else {
-            Element newElement =  new Element(fragment, this.lastElement, null);
-            this.lastElement.next = newElement;
-            this.lastElement = newElement;
+            Element newElement = new Element(fragment, lastElement,
+                    null);
+            lastElement.next = newElement;
+            lastElement = newElement;
         }
     }
 
     /**
-     * Returns a new FragmentList.Cursor pointing to the first element in the list.
-     * The List must contain at least one element otherwise a call to cursor is not allowed.
-     * Aborts if the list is empty.
+     * Returns a new FragmentList.Cursor pointing to the first element in the
+     * list. The List must contain at least one element otherwise a call to
+     * cursor is not allowed. Aborts if the list is empty.
      *
-     * @return A new FragmentList.Cursor pointing to the first element in the list
+     * @return A new FragmentList.Cursor pointing to the first element in the
+     *         list
      */
     public Cursor cursor() {
-        Helper.abortIf(this.isEmpty(), "the list is empty");
+        Helper.abortIf(isEmpty(), "the list is empty");
 
         return new Cursor(this);
     }
@@ -82,20 +84,19 @@ public class FragmentList {
      * @return true if there are no Fragments in the list, false otherwise.
      */
     public boolean isEmpty() {
-        return this.firstElement == null;
+        return firstElement == null;
     }
 
     /**
      * Returns the number of Fragments in the list.
      *
-     * Note, that this does not return
-     * the total number of characters.
+     * Note, that this does not return the total number of characters.
      *
      * @return The number of Fragments in the list.
      */
     public int size() {
         int result = 0;
-        Element nextElement = this.firstElement;
+        Element nextElement = firstElement;
         while (nextElement != null) {
             result++;
             nextElement = nextElement.getNext();
@@ -106,8 +107,8 @@ public class FragmentList {
     /**
      * A cursor to allow navigation and modification of a fragment-list.
      *
-     * @author  <insert your name here>
-     * @version  1.2
+     * @author <insert your name here>
+     * @version 1.2
      */
     public class Cursor {
         /** The fragment-list this cursor navigates. */
@@ -123,7 +124,7 @@ public class FragmentList {
          */
         public Cursor(FragmentList list) {
             this.list = list;
-            this.currentElement = list.firstElement;
+            currentElement = list.firstElement;
         }
 
         /**
@@ -132,109 +133,124 @@ public class FragmentList {
          * @return The current fragment the cursor points at.
          */
         public Fragment getFragment() {
-            return this.currentElement.getFragment();
+            return currentElement.getFragment();
         }
 
         /**
-         * Insert the Fragment into the FragmentList right after the current fragment.
+         * Insert the Fragment into the FragmentList right after the current
+         * fragment.
          *
          * @param fragment The Fragment to be inserted.
          */
         public void insertAfter(Fragment fragment) {
-            Element newElement = new Element(fragment, this.currentElement, this.currentElement.getNext());
-            if (this.currentElement.getNext() != null) {
-                this.currentElement.getNext().setPrevious(newElement);
+            Element newElement = new Element(fragment,
+                    currentElement, currentElement.getNext());
+            if (currentElement.getNext() != null) {
+                currentElement.getNext().setPrevious(newElement);
             } else {
-                this.list.lastElement = newElement;
+                list.lastElement = newElement;
             }
-            this.currentElement.setNext(newElement);
+            currentElement.setNext(newElement);
         }
 
         /**
-         * Insert the Fragment into the FragmentList right before the current fragment.
+         * Insert the Fragment into the FragmentList right before the current
+         * fragment.
          *
          * @param fragment The Fragment to be inserted.
          */
         public void insertBefore(Fragment fragment) {
-            Element newElement = new Element(fragment, this.currentElement.getPrevious(), this.currentElement);
-            if (this.currentElement.getPrevious() != null) {
-                this.currentElement.getPrevious().setNext(newElement);
+            Element newElement = new Element(fragment, currentElement
+                    .getPrevious(), currentElement);
+
+            if (currentElement.getPrevious() != null) {
+                currentElement.getPrevious().setNext(newElement);
             }
-            this.currentElement.setPrevious(newElement);
+
+            currentElement.setPrevious(newElement);
         }
 
         /**
-         * Deletes the Fragment right after the current Element.
-         * Aborts if the cursor points at the last element.
+         * Deletes the Fragment right after the current Element. Aborts if the
+         * cursor points at the last element.
          */
         public void deleteNext() {
-            Helper.abortIf(!this.hasNext(), "the cursor points at the last element");
-            Element element = this.currentElement.getNext().getNext();
+            Helper.abortIf(!hasNext(),
+                    "the cursor points at the last element");
+            Element element = currentElement.getNext().getNext();
             if (element != null) {
-                element.setPrevious(this.currentElement);
-                this.currentElement.setNext(element);
+                element.setPrevious(currentElement);
+                currentElement.setNext(element);
             } else {
-                this.currentElement.setNext(null);
+                currentElement.setNext(null);
             }
         }
 
         /**
-         * Deletes the Fragment right before the current Element.
-         * Aborts if the cursor points at the first element.
+         * Deletes the Fragment right before the current Element. Aborts if the
+         * cursor points at the first element.
          */
         public void deletePrevious() {
-            Helper.abortIf(!this.hasPrevious(), "the cursor points at the first element");
-            Element element = this.currentElement.getPrevious().getPrevious();
+            Helper.abortIf(!hasPrevious(),
+                    "the cursor points at the first element");
+            Element element = currentElement.getPrevious()
+                    .getPrevious();
             if (element != null) {
-                element.setNext(this.currentElement);
-                this.currentElement.setPrevious(element);
+                element.setNext(currentElement);
+                currentElement.setPrevious(element);
             } else {
-                this.currentElement.setPrevious(null);
+                currentElement.setPrevious(null);
             }
         }
 
         /**
-         * Returns true if there is another Fragment in the list after the current fragment.
+         * Returns true if there is another Fragment in the list after the
+         * current fragment.
          *
-         * @return True if there is another Fragment in the list after the current fragment.
+         * @return True if there is another Fragment in the list after the
+         *         current fragment.
          */
         public boolean hasNext() {
-            return this.currentElement.getNext() != null;
+            return currentElement.getNext() != null;
         }
 
         /**
-         * Returns true if there is another Fragment in the list before the current fragment.
+         * Returns true if there is another Fragment in the list before the
+         * current fragment.
          *
-         * @return True if there is another Fragment in the list before the current fragment.
+         * @return True if there is another Fragment in the list before the
+         *         current fragment.
          */
         public boolean hasPrevious() {
-            return this.currentElement.getPrevious() != null;
+            return currentElement.getPrevious() != null;
         }
 
         /**
-         * Returns the next element in the list and moves the cursor to the next fragment.
-         * Aborts if there is no next fragment.
+         * Returns the next element in the list and moves the cursor to the next
+         * fragment. Aborts if there is no next fragment.
          *
          * @return This Element's successor Element.
          */
         public Fragment next() {
-            Helper.abortIf(!this.hasNext(), "the cursor has no next element");
+            Helper.abortIf(!hasNext(),
+                    "the cursor has no next element");
 
-            this.currentElement = this.currentElement.getNext();
-            return this.currentElement.getFragment();
+            currentElement = currentElement.getNext();
+            return currentElement.getFragment();
         }
 
         /**
-         * Returns the previous element in the list and moves the cursor to the previous fragment.
-         * Aborts if there is no previous fragment.
+         * Returns the previous element in the list and moves the cursor to the
+         * previous fragment. Aborts if there is no previous fragment.
          *
          * @return This Element's predecessor Element.
          */
         public Fragment previous() {
-            Helper.abortIf(!this.hasPrevious(), "the cursor has no previous element");
+            Helper.abortIf(!hasPrevious(),
+                    "the cursor has no previous element");
 
-            this.currentElement = this.currentElement.getPrevious();
-            return this.currentElement.getFragment();
+            currentElement = currentElement.getPrevious();
+            return currentElement.getFragment();
         }
     }
 
@@ -243,14 +259,14 @@ public class FragmentList {
      */
     private class Element {
         /**
-         * This Element's predecessor Element.
-         * This is null if the Element is the first in the list.
+         * This Element's predecessor Element. This is null if the Element is
+         * the first in the list.
          */
         private Element prev = null;
 
         /**
-         * This Element's successor Element.
-         * This is null if the Element is the last in the list.
+         * This Element's successor Element. This is null if the Element is the
+         * last in the list.
          */
         private Element next = null;
 
@@ -258,8 +274,8 @@ public class FragmentList {
         private final Fragment fragment;
 
         /**
-         * Creates a new, list element.
-         * Inserts the Element into the list by adjusting the prev and next pointers.
+         * Creates a new, list element. Inserts the Element into the list by
+         * adjusting the prev and next pointers.
          *
          * @param fragment The Fragment this Element is supposed to store.
          * @param prev The element that should become the fragments predecessor
@@ -277,7 +293,7 @@ public class FragmentList {
          * @return The fragment of this Element.
          */
         private Fragment getFragment() {
-            return this.fragment;
+            return fragment;
         }
 
         /**
@@ -286,7 +302,7 @@ public class FragmentList {
          * @return The next Element.
          */
         private Element getNext() {
-            return this.next;
+            return next;
         }
 
         /**
@@ -304,7 +320,7 @@ public class FragmentList {
          * @return The previous Element.
          */
         private Element getPrevious() {
-            return this.prev;
+            return prev;
         }
 
         /**
@@ -313,7 +329,7 @@ public class FragmentList {
          * @param previous The previous Element.
          */
         private void setPrevious(Element previous) {
-            this.prev = previous;
+            prev = previous;
         }
     }
 }

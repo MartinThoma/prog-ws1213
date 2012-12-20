@@ -25,8 +25,7 @@ public class FragmentCursor {
      *            Fragment.
      */
     public FragmentCursor(Fragment fragment, int position) {
-        Helper
-                .abortIf(fragment == null,
+        Helper.abortIf(fragment == null,
                         "NullPointerException: you have to give a fragment, not null");
         Helper.abortIf(position < 0 || fragment.length() < position,
                 "position is out of fragment bounds");
