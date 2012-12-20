@@ -1,13 +1,12 @@
 package wordprocessor;
 
-
 /**
- * Models a string of characters with an associated style.
- * Wraps a StringBuffer object containing the fragment's text.
- * Provides methods to edit that text and to change the style.
+ * Models a string of characters with an associated style. Wraps a StringBuffer
+ * object containing the fragment's text. Provides methods to edit that text and
+ * to change the style.
  *
- * @author  anonymer Student und Tutoren
- * @version  1.2
+ * @author anonymer Student und Tutoren
+ * @version 1.2
  */
 public class Fragment {
     /** The StringBuffer containing the Fragment's text. */
@@ -17,8 +16,8 @@ public class Fragment {
     private final Style style;
 
     /**
-     * Creates a new, empty Fragment with the given style.
-     * Aborts if style is null.
+     * Creates a new, empty Fragment with the given style. Aborts if style is
+     * null.
      *
      * @param style The Style according to which the Fragment is formatted.
      */
@@ -30,14 +29,15 @@ public class Fragment {
     }
 
     /**
-     * Creates a new Fragment with the given text and style.
-     * Aborts if style is null or string is null.
+     * Creates a new Fragment with the given text and style. Aborts if style is
+     * null or string is null.
      *
      * @param style The Style according to which the Fragment will be formatted.
      * @param string The new Fragment's text.
      */
     public Fragment(Style style, String string) {
-        Helper.abortIf(string == null || style == null, "Style is null or String is null.");
+        Helper.abortIf(string == null || style == null,
+                "Style is null or String is null.");
 
         this.style = style;
         this.content = new StringBuilder(string);
@@ -62,15 +62,15 @@ public class Fragment {
     }
 
     /**
-     * Returns the character at the position.
-     * Aborts if there is no character at the given position
-     * (position is out of string bounds).
+     * Returns the character at the position. Aborts if there is no character at
+     * the given position (position is out of string bounds).
      *
      * @param position The position of the character to be returned.
      * @return The character at the specified position.
      */
     public Character charAt(int position) {
-        Helper.abortIf(position < 0 || this.length() <= position, "Invalid position");
+        Helper.abortIf(position < 0 || this.length() <= position,
+                "Invalid position");
 
         Character result = null;
         if (this.checkPosition(position)) {
@@ -82,11 +82,11 @@ public class Fragment {
     /**
      * Inserts the string at position into the Fragment.
      *
-     * After insertion the first of the newly inserted characters is at
-     * position <code>position</code>.
+     * After insertion the first of the newly inserted characters is at position
+     * <code>position</code>.
      *
-     * Aborts if the given position is invalid (the string can not be inserted there).
-     * Aborts if string is null.
+     * Aborts if the given position is invalid (the string can not be inserted
+     * there). Aborts if string is null.
      *
      * @param position The position to insert at.
      * @param string The String to insert.
@@ -109,7 +109,9 @@ public class Fragment {
      * @param position The position of the character to be deleted.
      */
     public void deleteCharAt(int position) {
-        Helper.abortIf(position < 0 || this.length() <= position, "here is no character to be deleted at the given position");
+        Helper
+                .abortIf(position < 0 || this.length() <= position,
+                        "here is no character to be deleted at the given position");
 
         if (this.checkPosition(position)) {
             this.content.deleteCharAt(position);
@@ -117,13 +119,16 @@ public class Fragment {
     }
 
     /**
-     * Return True if the position is between 0 and String length, abort and false otherwise.
+     * Return True if the position is between 0 and String length, abort and
+     * false otherwise.
      *
      * @param position The position of the character
-     * @return True if the position is between 0 and String length, abort and false otherwise.
+     * @return True if the position is between 0 and String length, abort and
+     *         false otherwise.
      */
     public boolean checkPosition(int position) {
-        Helper.abortIf(!(position >= 0 && position <= this.length()), "position is out of string bounds");
+        Helper.abortIf(!(position >= 0 && position <= this.length()),
+                "position is out of string bounds");
         return true;
     }
 
@@ -133,41 +138,43 @@ public class Fragment {
      * @return The Style associated with the Fragment.
      */
     public Style getStyle() {
-        return this.style;
+        return style;
     }
 
     /**
-     * Returns a substring of the Fragment's text.
-     * Aborts if one of the two parameters is out of the string's bounds.
-     * The character at position start is included in the substring,
-     * the character at position end is not included in the substring.
+     * Returns a substring of the Fragment's text. Aborts if one of the two
+     * parameters is out of the string's bounds. The character at position start
+     * is included in the substring, the character at position end is not
+     * included in the substring.
      *
      * @param start inclusive
      * @param end exclusive
      * @return The substring at [start,end).
      */
     public String substring(int start, int end) {
-        Helper.abortIf(start > end, "substring position start is > position end");
-        String result = this.content.toString();
-        if (this.checkPosition(start) && this.checkPosition(end)) {
-            result = this.content.substring(start, end);
+        Helper.abortIf(start > end,
+                "substring position start is > position end");
+        String result = content.toString();
+        if (checkPosition(start) && checkPosition(end)) {
+            result = content.substring(start, end);
         }
         return result;
     }
 
     /**
      * Deletes the substring between start and end of the fragment's text.
-     * Aborts if one of the two parameters is out of the string's bounds.
-     * The character at position start is included in the substring,
-     * the character at position end is not included in the substring.
+     * Aborts if one of the two parameters is out of the string's bounds. The
+     * character at position start is included in the substring, the character
+     * at position end is not included in the substring.
      *
      * @param start Inclusive start of the substring.
      * @param end Exclusive end of the substring.
      */
     public void deleteSubstring(int start, int end) {
-        Helper.abortIf(start > end, "substring position start is > position end");
-        if (this.checkPosition(start) && this.checkPosition(end)) {
-            this.content.delete(start, end);
+        Helper.abortIf(start > end,
+                "substring position start is > position end");
+        if (checkPosition(start) && checkPosition(end)) {
+            content.delete(start, end);
         }
     }
 
@@ -178,22 +185,24 @@ public class Fragment {
      */
     @Override
     public String toString() {
-        return this.content.toString();
+        return content.toString();
     }
 
     /**
-     * Returns the Fragment's text as formatted HTML code.
-     * If the Fragment does not contain any characters this method does not add
-     * HTML either, and therefore returns an empty String.
+     * Returns the Fragment's text as formatted HTML code. If the Fragment does
+     * not contain any characters this method does not add HTML either, and
+     * therefore returns an empty String.
      *
      * @return The Fragment's text as formatted HTML code.
      */
     public String toHTML() {
-        String result = "";
-        if (!this.isEmpty()) {
-            result = this.style.getHTMLStartTags() + this.toString() + this.style.getHTMLEndTags();
+        if (isEmpty()) {
+            return "";
         }
-        return result;
+
+        return style.getHTMLStartTags() + toString()
+                + style.getHTMLEndTags();
+
     }
 
 }
