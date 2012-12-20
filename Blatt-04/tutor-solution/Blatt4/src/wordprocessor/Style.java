@@ -5,8 +5,8 @@ package wordprocessor;
  *
  * Currently this is only bold and italic.
  *
- * @author  anonymer Student und Tutoren
- * @version  1.2
+ * @author anonymer Student und Tutoren
+ * @version 1.2
  */
 public class Style {
     /** True if the text is formatted in bold, false otherwise. */
@@ -27,24 +27,25 @@ public class Style {
     }
 
     /**
-     * Sets the bold and italic attributes according to the given style-change command.
+     * Sets the bold and italic attributes according to the given style-change
+     * command.
      *
      * @param change The style-change command
      */
     public void apply(StyleChange change) {
-        switch(change) {
-            case SET_BOLD:
-                this.bold = true;
-                break;
-            case UNSET_BOLD:
-                this.bold = false;
-                break;
-            case SET_ITALIC:
-                this.italic = true;
-                break;
-            case UNSET_ITALIC:
-                this.italic = false;
-                break;
+        switch (change) {
+        case SET_BOLD:
+            bold = true;
+            break;
+        case UNSET_BOLD:
+            bold = false;
+            break;
+        case SET_ITALIC:
+            italic = true;
+            break;
+        case UNSET_ITALIC:
+            italic = false;
+            break;
         }
     }
 
@@ -54,7 +55,7 @@ public class Style {
      * @return True iff text of this Style is bold.
      */
     public boolean isBold() {
-        return this.bold;
+        return bold;
     }
 
     /**
@@ -63,17 +64,15 @@ public class Style {
      * @return True iff text of this Style is italic.
      */
     public boolean isItalic() {
-        return this.italic;
+        return italic;
     }
 
     /**
      * Compares Styles for equality with other objects.
      *
-     * Styles are equal, when they format text in the same way, e.g.
-     * both are non-bold and non-italic,
-     * both are bold but non-italic,
-     * both are non-bold but italic, or
-     * both are bold and italic.
+     * Styles are equal, when they format text in the same way, e.g. both are
+     * non-bold and non-italic, both are bold but non-italic, both are non-bold
+     * but italic, or both are bold and italic.
      *
      * @param other The object to compare to.
      * @return True iff the Styles are equal.
@@ -95,7 +94,8 @@ public class Style {
 
         if (other instanceof Style) {
             Style otherStyle = (Style) other;
-            result = this.bold == otherStyle.isBold() && this.italic == otherStyle.isItalic();
+            result = bold == otherStyle.isBold()
+                    && italic == otherStyle.isItalic();
         }
         return result;
     }
@@ -113,10 +113,10 @@ public class Style {
      */
     public String getHTMLStartTags() {
         String result = "";
-        if (this.bold) {
+        if (bold) {
             result += "<b>";
         }
-        if (this.italic) {
+        if (italic) {
             result += "<i>";
         }
         return result;
@@ -125,8 +125,8 @@ public class Style {
     /**
      * Returns a String containing HTML end tags for the Style.
      *
-     * The String contains any combination of &lt;/b&gt; for bold and
-     * &lt;/i&gt; for italic text, and no other characters.
+     * The String contains any combination of &lt;/b&gt; for bold and &lt;/i&gt;
+     * for italic text, and no other characters.
      *
      * Ordering of the tags must be consistent with getHTMLStartTags(), so that
      * an HTML document generated with these methods has correctly nested tags.
@@ -136,10 +136,10 @@ public class Style {
     public String getHTMLEndTags() {
         // sehr gut, du hast auf die Reihenfolge geachtet!
         String result = "";
-        if (this.italic) {
+        if (italic) {
             result += "</i>";
         }
-        if (this.bold) {
+        if (bold) {
             result += "</b>";
         }
         return result;
