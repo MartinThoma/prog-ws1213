@@ -1,11 +1,11 @@
 package mediabib;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Klasse symbolisiert eine Band in der Medienbibliothek.
  * @author Student(in) hat Basis geschrieben; verbessert von Tutor(en)
- * @version 1.0
+ * @version 1.1
  *
  */
 public class Band extends Originator implements Matchable {
@@ -14,14 +14,14 @@ public class Band extends Originator implements Matchable {
     private final String bandName;
 
     /** Liste aller Bandmitglieder. */
-    private final ArrayList<Originator> members;
+    private final List<Originator> members;
 
     /**
      * Konstruktor der Klasse Band.
      * @param bandName Bandname der Band
      * @param members Mitgliederliste der Band
      */
-    public Band(String bandName, ArrayList<Originator> members) {
+    public Band(String bandName, List<Originator> members) {
         this.bandName = bandName;
         this.members = members;
     }
@@ -47,7 +47,7 @@ public class Band extends Originator implements Matchable {
      * Liefert Mitgliederliste der Band.
      * @return Mitgliederliste der Band
      */
-    public ArrayList<Originator> getMembers() {
+    public List<Originator> getMembers() {
         return this.members;
     }
 

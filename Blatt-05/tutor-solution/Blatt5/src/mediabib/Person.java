@@ -4,21 +4,21 @@ package mediabib;
 /**
  * Klasse symbolisiert eine Person in der Medienbibliothek.
  * @author Student(in) hat Basis geschrieben; verbessert von Tutor(en)
- * @version 1.0
+ * @version 1.1
  *
  */
 public class Person extends Originator implements Matchable {
-    private final String firstName;
-    private final String lastName;
+    private final String firstname;
+    private final String lastname;
 
     /**
      * Konstruktor der Klasse Person.
-     * @param firstName Vorname der Person
-     * @param lastName Nachname der Person
+     * @param firstname Vorname der Person
+     * @param lastname Nachname der Person
      */
     public Person(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.firstname = firstName;
+        this.lastname = lastName;
     }
 
     /**
@@ -26,7 +26,7 @@ public class Person extends Originator implements Matchable {
      * @return Vorname der Person
      */
     public String getFirstName() {
-        return this.firstName;
+        return this.firstname;
     }
 
     /**
@@ -34,7 +34,7 @@ public class Person extends Originator implements Matchable {
      * @return Nachname der Person
      */
     public String getLastName() {
-        return this.lastName;
+        return this.lastname;
     }
 
     /**
@@ -43,7 +43,7 @@ public class Person extends Originator implements Matchable {
      */
     @Override
     public String toString() {
-        return this.firstName + " " + this.lastName;
+        return this.firstname + " " + this.lastname;
     }
 
     /**
@@ -52,7 +52,7 @@ public class Person extends Originator implements Matchable {
      */
     @Override
     public Person clone() {
-        return new Person(this.firstName, this.lastName);
+        return new Person(this.firstname, this.lastname);
     }
 
     /**
@@ -82,7 +82,7 @@ public class Person extends Originator implements Matchable {
      */
     @Override
     public int hashCode() {
-        return firstName.hashCode() + lastName.hashCode();
+        return firstname.hashCode() + lastname.hashCode();
     }
 
     /**
@@ -93,9 +93,9 @@ public class Person extends Originator implements Matchable {
      */
     @Override
     public boolean match(String str) {
-        return new LevenshteinHelper(this.firstName,
+        return new LevenshteinHelper(this.firstname,
                 str).getNormalizedLevenshteinDistance() < 0.25
-                || new LevenshteinHelper(this.lastName,
+                || new LevenshteinHelper(this.lastname,
                         str).getNormalizedLevenshteinDistance() < 0.25
                 || new LevenshteinHelper(this.toString(),
                         str).getNormalizedLevenshteinDistance() < 0.25;

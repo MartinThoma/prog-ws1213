@@ -1,20 +1,21 @@
 package mediabib;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Klasse symbolisiert die Datenbank der Medienbibliothek.
  * @author Student(in) hat Basis geschrieben; verbessert von Tutor(en)
- * @version 1.0
+ * @version 1.1
  *
  */
 public class Database {
 
     /** Liste aller Urheber. */
-    private final ArrayList<Originator> originators;
+    private final List<Originator> originators;
 
     /** Liste aller Mediendateien. */
-    private final ArrayList<MediaFile> mediaFiles;
+    private final List<MediaFile> mediaFiles;
 
     /**
      * Konstruktor der Database Klasse.
@@ -49,8 +50,8 @@ public class Database {
      * @param str Suchbegriff
      * @return Urheberliste
      */
-    public ArrayList<Originator> searchOriginators(String str) {
-        ArrayList<Originator> result = new ArrayList<Originator>();
+    public List<Originator> searchOriginators(String str) {
+        List<Originator> result = new ArrayList<Originator>();
         for (Originator originator : this.originators) {
             if (originator.match(str)) {
                 result.add(originator);
@@ -64,8 +65,8 @@ public class Database {
      * @param str Suchbegriff
      * @return Mediendateiliste
      */
-    public ArrayList<MediaFile> searchMediaFiles(String str) {
-        ArrayList<MediaFile> result = new ArrayList<MediaFile>();
+    public List<MediaFile> searchMediaFiles(String str) {
+        List<MediaFile> result = new ArrayList<MediaFile>();
         for (MediaFile mediaFile : this.mediaFiles) {
             if (mediaFile.match(str)) {
                 result.add(mediaFile);
@@ -79,8 +80,8 @@ public class Database {
      * @param str Suchbegriff
      * @return Liste mit allen Elementen
      */
-    public ArrayList<Object> search(String str) {
-        ArrayList<Object> result = new ArrayList<Object>();
+    public List<Object> search(String str) {
+        List<Object> result = new ArrayList<Object>();
         result.addAll(searchOriginators(str));
         result.addAll(searchMediaFiles(str));
         return result;

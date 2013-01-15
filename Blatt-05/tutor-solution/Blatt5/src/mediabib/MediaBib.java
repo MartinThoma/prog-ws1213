@@ -1,6 +1,7 @@
 package mediabib;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import programmieren.MyTerminal;
 
@@ -52,9 +53,9 @@ public final class MediaBib {
      */
     private static void search() {
         String searchTerm = MyTerminal.askString("Enter search term> ");
-        ArrayList<Object> resultObjects = database.search(searchTerm);
+        List<Object> resultObjects = database.search(searchTerm);
         if (resultObjects.size() > 0) {
-            ArrayList<String> resultList = new ArrayList<String>();
+            List<String> resultList = new ArrayList<String>();
             for (Object obj : resultObjects) {
                 String result = "";
                 if (obj instanceof Person) {
@@ -144,13 +145,13 @@ public final class MediaBib {
     private static void addBand() {
         String bandName = MyTerminal.askString("Enter band name> ");
         String memberName = "";
-        ArrayList<Originator> memberList = new ArrayList<Originator>();
+        List<Originator> memberList = new ArrayList<Originator>();
         while (!memberName.equals("quit")) {
             memberName = MyTerminal.askString("Enter member or 'quit'> ");
             if (memberName.equals("quit")) {
                 continue;
             }
-            ArrayList<Originator> searchResult = database
+            List<Originator> searchResult = database
                     .searchOriginators(memberName);
 
             if (searchResult.size() == 1) {
@@ -169,7 +170,7 @@ public final class MediaBib {
     private static void addAudio() {
         String uri = MyTerminal.askString("Enter URI> ");
         String originatorName = MyTerminal.askString("Enter creator> ");
-        ArrayList<Originator> originatorList = database
+        List<Originator> originatorList = database
                 .searchOriginators(originatorName);
         if (originatorList.size() == 1) {
             int seconds = MyTerminal.askInt("Enter duration (as integer)> ");
@@ -186,7 +187,7 @@ public final class MediaBib {
     private static void addVideo() {
         String uri = MyTerminal.askString("Enter URI> ");
         String originatorName = MyTerminal.askString("Enter creator> ");
-        ArrayList<Originator> originatorList = database
+        List<Originator> originatorList = database
                 .searchOriginators(originatorName);
         if (originatorList.size() == 1) {
             int width = MyTerminal.askInt("Enter width (as integer)> ");

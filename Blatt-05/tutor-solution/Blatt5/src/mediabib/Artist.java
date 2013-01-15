@@ -2,8 +2,9 @@ package mediabib;
 
 /**
  * Klasse symbolisiert einen Künstler in der Medienbibliothek.
+ *
  * @author Student(in) hat Basis geschrieben; verbessert von Tutor(en)
- * @version 1.0
+ * @version 1.1
  *
  */
 public class Artist extends Person implements Matchable {
@@ -13,6 +14,7 @@ public class Artist extends Person implements Matchable {
 
     /**
      * Konstruktor der Klasse Artist.
+     *
      * @param firstName Vorname des Künstlers
      * @param artistName Künstlername des Künstlers
      * @param lastName Nachname des Künstlers
@@ -24,32 +26,38 @@ public class Artist extends Person implements Matchable {
 
     /**
      * Liefert Künstlername des Künstlers.
+     *
      * @return Künstlername des Künstlers
      */
     public String getArtistName() {
-        return this.artistName;
+        return artistName;
     }
 
     /**
      * Liefert String zu aktuellem Künstler Objekt.
+     *
      * @return String zu aktuellem Künstler Objekt
      */
     @Override
     public String toString() {
-        return this.getFirstName() + " \"" + this.artistName + "\" " + this.getLastName();
+        return getFirstName() + " \"" + artistName + "\" "
+                + getLastName();
     }
 
     /**
      * Klont das Objekt.
+     *
      * @return Klon des Objekts
      */
     @Override
     public Artist clone() {
-        return new Artist(super.getFirstName(), this.artistName, super.getLastName());
+        return new Artist(super.getFirstName(), artistName, super
+                .getLastName());
     }
 
     /**
      * Vergleicht dieses mit dem übergebenen Objekt auf Gleichheit.
+     *
      * @param other Objekt der vergleicht werden soll.
      * @return Liefert true wenn die Objekte gleich sind.
      */
@@ -71,6 +79,7 @@ public class Artist extends Person implements Matchable {
 
     /**
      * Liefert hash code zum Objekt.
+     *
      * @return hash code zum Objekt
      */
     @Override
@@ -79,16 +88,17 @@ public class Artist extends Person implements Matchable {
     }
 
     /**
-     * Liefert die Übereinstimmung des Objekts anhand der normalisierten Levenshtein Distanz zu einem
-     * übergebenen String.
+     * Liefert die Übereinstimmung des Objekts anhand der normalisierten
+     * Levenshtein Distanz zu einem übergebenen String.
+     *
      * @param str Suchbegriff
      * @return true wenn String zum Objekt passt.
      */
     @Override
     public boolean match(String str) {
-        return new LevenshteinHelper(this.artistName, str).getNormalizedLevenshteinDistance() < 0.25
+        return new LevenshteinHelper(this.artistName, str)
+                .getNormalizedLevenshteinDistance() < 0.25
                 || super.match(str);
     }
-
 
 }
