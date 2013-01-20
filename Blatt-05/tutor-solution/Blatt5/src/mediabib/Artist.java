@@ -69,9 +69,12 @@ public class Artist extends Person implements Matchable {
             if (artist == this) {
                 result = true;
             } else {
-                result = artist.getFirstName() == this.getFirstName()
-                        && artist.getLastName() == this.getLastName()
-                        && artist.getArtistName() == this.artistName;
+                Person person = (Person) other;
+                if (!person.equals(this)) {
+                    result = false;
+                } else {
+                    result = artist.getArtistName().equals(this.artistName);
+                }
             }
         }
         return result;
