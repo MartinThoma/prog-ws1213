@@ -3,16 +3,19 @@ package fiveinarow;
 /**
  * This class models a Five-in-a-row game.
  *
- * @author Martin Thoma
+ * @author Martin Thoma (based on a solution of BlackBlizzard)
  * @version 1.2
  *
  */
 public class FiveInARow {
 
+    /** When you have that many tokens in a row, you win */
+    public static final int WINNING_NUMBER = 5;
+
     /** The field of the game. */
     private final Board board;
 
-    /** Whos turn is it? */
+    /** Whose turn is it? */
     private Player currentPlayer;
 
     /** Is the game finished? */
@@ -25,8 +28,8 @@ public class FiveInARow {
     private Player winner;
 
     /**
-     * This initiates an empty Five-In-A-Row game.
-     * The WHITE player starts
+     * This initiates an empty Five-In-A-Row game. The WHITE player starts
+     *
      * @param width the width of the board
      * @param height the height of the board
      */
@@ -37,6 +40,7 @@ public class FiveInARow {
 
     /**
      * Which token has the player?
+     *
      * @param player the player whose token you want to get
      * @return the token of player
      */
@@ -63,7 +67,7 @@ public class FiveInARow {
             isDraw = true;
         }
 
-        if(currentPlayer == Player.WHITE) {
+        if (currentPlayer == Player.WHITE) {
             currentPlayer = Player.BLACK;
         } else {
             currentPlayer = Player.WHITE;
@@ -83,13 +87,20 @@ public class FiveInARow {
                 || isFive(player, 0, 1); // horizontal
     }
 
+    /**
+     *
+     * @param player
+     * @param xDir
+     * @param yDir
+     * @return
+     */
     private boolean isFive(Player player, int xDir, int yDir) {
         boolean gotFive;
 
         for (int x = 0; x < board.width; x++) {
             for (int y = 0; y < board.height; y++) {
                 gotFive = true;
-                for (int c = 0; c < 5; c++) {
+                for (int c = 0; c < WINNING_NUMBER; c++) {
                     if (!board.isOnBoard(x + c * xDir, y + c * yDir)
                             || board.getTile(x + c * xDir, y + c
                                     * yDir) != playerToToken(player)) {

@@ -4,7 +4,7 @@ package fiveinarow;
  * This class models the shell interaction with a player of the game
  * Five-in-a-row.
  *
- * @author Martin Thoma
+ * @author Martin Thoma (based on a solution of BlackBlizzard)
  * @version 1.2
  *
  */

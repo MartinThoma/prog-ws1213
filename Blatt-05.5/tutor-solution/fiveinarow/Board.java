@@ -2,7 +2,8 @@ package fiveinarow;
 
 /**
  * This class represents a board.
- * @author Martin Thoma
+ *
+ * @author Martin Thoma (based on a solution of BlackBlizzard)
  * @version 1.2
  *
  */
