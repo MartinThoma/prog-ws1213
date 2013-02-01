@@ -14,3 +14,10 @@ Simon Schäfer (auch ein Programmieren-Tutor) macht ein [Java-Tutorial](https://
 (Da scheint ja einiges von mir drin zu sein ;-))
 
 Eine weitere empfehlenswerte Seite ist [http://kit.trvx.org/](kit.trvx.org).
+
+Wiederverwendung
+----------------
+Ihr dürft gerne alles verwenden, was ich gemacht habe. Aber bitte
+verweist auf die Quelle (dieses Repository oder martin-thoma.com),
+wenn ihr mein Zeug verwendet.
+
